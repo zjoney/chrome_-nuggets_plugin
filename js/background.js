@@ -158,3 +158,37 @@ const requestUserInfo = (tabId = 0) => {
     sendData()
   })
 }
+
+
+/**
+ * 页面右键菜单，只需要 background  向 content-script 发送数据
+ */
+ const sendData = () => {
+  chrome.tabs.query(
+    {
+      active: true,
+      currentWindow: true
+    },
+    (tabs) => {
+      let message = {
+        refresh: true
+      }
+      chrome.tabs.sendMessage(tabs[0].id, message, (res) => {
+        console.log('background => content-script')
+      })
+    }
+  )
+}
+
+/**
+ * 点击 popup 里面的确认，发过来的消息
+ */
+const sendDataPopup = (tabId) => {
+  let message = {
+    refresh: true
+  }
+
+  chrome.tabs.sendMessage(tabId, message, (res) => {
+    console.log('bg=>content, popup')
+  })
+}
