@@ -1,0 +1,11 @@
+{
+  "name": "schelley-掘金",
+  "description": "chrome关注用户的工具",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "icons": {
+    "16": "image/follow.jpeg",
+    "48": "image/follow.jpeg",
+    "128": "image/follow.jpeg"
+  }
+}
