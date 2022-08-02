@@ -32,6 +32,10 @@
     }
   ],
   "permissions": [
-    "storage"
+    "tabs",
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "https://api.juejin.cn/user_api/v1/user"
   ]
 }
