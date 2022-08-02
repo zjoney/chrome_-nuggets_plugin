@@ -80,3 +80,33 @@ window.onload = () => {
     main()
   }, 1000)
 }
+
+
+/**
+ * 清除页面 DOM
+ */
+ const clearDom = () => {
+  return new Promise((resolve, reject) => {
+    const myPluginEle = document.getElementById('wangzaimisu')
+
+    if (myPluginEle) {
+      myPluginEle.parentNode.removeChild(myPluginEle)
+    }
+    resolve()
+  })
+}
+
+/**
+ * 监听 background 传来的 数据
+ */
+chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
+  if (data.refresh) {
+    clearDom()
+      .then((res) => {
+        main()
+      })
+      .finally(() => {
+        return true
+      })
+  }
+})
